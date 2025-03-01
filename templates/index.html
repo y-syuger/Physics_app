@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ questions['title'] }}</title>
+    <script type="text/javascript" async
+        src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/MathJax.js?config=TeX-MML-AM_CHTML">
+    </script>
+</head>
+<body>
+    <h1>{{ questions['title'] }}</h1>
+    <div>
+        {% for question in questions['questions'] %}
+            <div class="question">
+                <p><strong>問題:</strong> {{ question['question'] }}</p>
+                <p><strong>数式:</strong> $$ {{ question['tex'] }} $$</p>
+                <p><strong>解説:</strong> {{ question['explanation'] }}</p>
+                <hr>
+            </div>
+        {% endfor %}
+    </div>
+
+    <script>
+        // MathJaxでTeX記法をレンダリング
+        MathJax.Hub.Queue(["Typeset", MathJax.Hub]);
+    </script>
+</body>
+</html>
