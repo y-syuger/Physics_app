@@ -15,15 +15,20 @@
             <div class="question">
                 <p><strong>問題:</strong> {{ question['question'] }}</p>
                 <p><strong>数式:</strong> $$ {{ question['tex'] }} $$</p>
-                <p><strong>解説:</strong> {{ question['explanation'] }}</p>
+                <p><strong>解説:</strong> <span class="explanation">{{ question['explanation'] }}</span></p>
                 <hr>
             </div>
         {% endfor %}
     </div>
 
     <script>
-        // MathJaxでTeX記法をレンダリング
-        MathJax.Hub.Queue(["Typeset", MathJax.Hub]);
+        // ページ全体を再レンダリングする
+        window.onload = function() {
+            if (window.MathJax) {
+                // MathJaxが準備できたら再レンダリングを試みる
+                MathJax.Hub.Queue(["Typeset", MathJax.Hub, document.body]);
+            }
+        };
     </script>
 </body>
 </html>

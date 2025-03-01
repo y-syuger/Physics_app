@@ -6,7 +6,7 @@ app = Flask(__name__)
 
 # Jsonから問題を取得
 def load_questions():
-    with open('questions/questions.json', 'r', encoding='utf-8') as f:
+    with open('data/questions.json', 'r', encoding='utf-8') as f:
         questions = json.load(f)
         return questions
 
